@@ -38,7 +38,7 @@ class FetchJeepTest extends FetchJeepTestpSupport{
 		
 		
 		
-		//Then: a succes (OK - 200( status code is returned
+		//Then: if the test case passes then a succes (OK - 200( status code is returned
 		
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 		
