@@ -16,7 +16,16 @@ public class BaseTest {
 //    protected String getBaseUri() {
 //    	return String.format("http://localhost:%d/jeeps?model=%s&trim=%s", serverPort);
     	
-    	  protected String getBaseUri() {
+    	  protected String getBaseUriForJeeps() {
     	    	return String.format("http://localhost:%d/jeeps", serverPort);
 }
+    	  
+    	  
+    	  protected String getBaseUriForOrders() {
+  	    	return String.format("http://localhost:%d/orders", serverPort);
+}
+    	  
+    	  protected String getBaseUri() {
+    		    return String.format("http://localhost:%d/jeeps", serverPort);
+    		  }
 }
