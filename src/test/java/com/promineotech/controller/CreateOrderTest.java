@@ -19,6 +19,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 import org.springframework.test.jdbc.JdbcTestUtils;
+import org.springframework.web.bind.annotation.Mapping;
 
 //import com.mysql.cj.x.protobuf.MysqlxCrud.Order;
 
@@ -35,7 +36,8 @@ import com.promineotech.jeep.entity.Order;
 			"classpath:flyway/migrations/V1.1__Jeep_Data.sql"},
 config = @SqlConfig(encoding = "utf-8"))
 class CreateOrderTest extends CreateOrderTestSupport {
-
+	
+   
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
@@ -60,7 +62,7 @@ class CreateOrderTest extends CreateOrderTestSupport {
 		// When: the order is sent
 		ResponseEntity<Order> response = getRestTemplate().exchange(uri,
 				HttpMethod.POST,bodyEntity, Order.class);
-				
+			
 		// Then: a 201 status is returned
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
 		
@@ -78,7 +80,7 @@ class CreateOrderTest extends CreateOrderTestSupport {
 		assertThat(order.getOptions()).hasSize(6);
 		
 		
-		asserThat(JdbcTestUtils.countRowsInTable(jdbcTemplate, "orders"))
+		assertThat(JdbcTestUtils.countRowsInTable(jdbcTemplate, "orders"))
 		.isEqualTo(numRowsOrders + 1);
 		
 		assertThat(JdbcTestUtils.countRowsInTable(jdbcTemplate, "orders"))
@@ -86,10 +88,10 @@ class CreateOrderTest extends CreateOrderTestSupport {
 	}
 
 
-	private Object asserThat(int countRowsInTable) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	private Object asserThat(int countRowsInTable) {
+//		
+//		return null;
+//	}
 
 }
 

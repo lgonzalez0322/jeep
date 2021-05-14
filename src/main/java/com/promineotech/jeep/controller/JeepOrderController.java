@@ -74,10 +74,7 @@ public interface JeepOrderController {
 	Order createOrder(@Valid @RequestBody OrderRequest orderRequest);
 }
 			
-	
-	
-	
-	
+		
 	// @formatter:on
 	
 	

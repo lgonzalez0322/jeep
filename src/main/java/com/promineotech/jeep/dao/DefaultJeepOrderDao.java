@@ -17,6 +17,7 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 
@@ -90,7 +91,7 @@ for(Option option : options) {
 				+ ":option_fk, :order_fk"
 				+ ")";
 		//@formatter:on
-		params.source.addValue("option_fk",  option.getOptionPK());
+		params.source.addValue("option_fk", options.get(0).getOptionPK());
 		params.source.addValue("order_fk", orderPK);
 		
 		return params;
@@ -210,7 +211,7 @@ for(Option option : options) {
 		params.put("trim_level", trim);
 		params.put("num_doors", doors);
 		
-		return jdbcTemplate.query(sql, params, new ModelResultSetExtractor());
+		return Optional.ofNullable(jdbcTemplate.query(sql, params, new JeepResultSetExtractor()));
 		
 		}
 	
@@ -294,6 +295,12 @@ for(Option option : options) {
 class SqlParams {
 	String sql;
 	MapSqlParameterSource source = new MapSqlParameterSource();
+}
+
+@Override
+public Order saveOrder(Customer customer, Jeep jeep, Color color, Engine engine, Tire tire, BigDecimal price) {
+	// TODO Auto-generated method stub
+	return null;
 }
 
 
