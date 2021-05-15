@@ -2,6 +2,8 @@ package com.promineotech.jeep.entity;
 
 import java.math.BigDecimal;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Builder;
 import lombok.Data;
 @Builder
@@ -14,4 +16,8 @@ private String manufacturer;
 private String name;
 private BigDecimal price;
 
+@JsonIgnore
+public Long getOptionPK() {
+	return optionPK;
+}
 }

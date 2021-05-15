@@ -51,9 +51,8 @@ public class DefaultJeepOrderDao implements JeepOrderDao {
 		Long orderPK = keyHolder.getKey().longValue();
 		
 		saveOptions(options, orderPK);
-		
-		return Order.builder(
-				)
+		//@formatter :off
+		return Order.builder()
 				.orderPK(orderPK)
 				.customer(customer)
 				.model(jeep)
@@ -64,7 +63,7 @@ public class DefaultJeepOrderDao implements JeepOrderDao {
 				.price(price)
 				.build();
 				
-		
+		//@formatter:on
 	}
 	
 	
@@ -72,7 +71,7 @@ public class DefaultJeepOrderDao implements JeepOrderDao {
 	
 	private void saveOptions(List<Option> options, Long orderPK) {
 for(Option option : options) {
-		SqlParams params = generateInsertSql(options, orderPK);
+		SqlParams params = generateInsertSql(option, orderPK);
 			
 		jdbcTemplate.update(params.sql, params.source);
  }
@@ -80,8 +79,7 @@ for(Option option : options) {
 	}
 
 
-	private SqlParams generateInsertSql(List<Option> options, Long orderPK) {
-		// TODO Auto-generated method stub
+	private SqlParams generateInsertSql(Option option, Long orderPK) {
 		SqlParams params = new SqlParams();
 		//@formatter:off
 		params.sql = ""
@@ -91,7 +89,7 @@ for(Option option : options) {
 				+ ":option_fk, :order_fk"
 				+ ")";
 		//@formatter:on
-		params.source.addValue("option_fk", options.get(0).getOptionPK());
+		params.source.addValue("option_fk",option.getOptionPK());
 		params.source.addValue("order_fk", orderPK);
 		
 		return params;
@@ -107,7 +105,7 @@ for(Option option : options) {
 				+ "INSERT INTO orders ('"
 				+ "customer_fk, color_fk, engine_fk, tire_fk, model_fk, price"
 				+") VALUES ("
-				+ ":customer_fk, color_fk, engine_fk, tire_fk, model_fk, :price"	
+				+ ":customer_fk, :color_fk, :engine_fk, :tire_fk, :model_fk, :price"				
 				+ ")";
 				//@formatter:on
 		
@@ -118,7 +116,7 @@ for(Option option : options) {
 		params.source.addValue("engine_fk", engine.getEnginePK());
 		params.source.addValue("tire_fk", tire.getTirepk());
 		params.source.addValue("model_fk", jeep.getModelPK());
-		params.source.addValue("price_fk", price);
+		params.source.addValue("price", price);
 		
 				
 		return params;
@@ -144,7 +142,7 @@ for(Option option : options) {
 		
 		
 		for (int index = 0; index < optionIds.size(); index++) {
-			String key = ":option_" + index;
+			String key = "option_" + index;
 			sql += ":" + key + ", ";
 			params.put(key, optionIds.get(index));
 		}
@@ -163,7 +161,7 @@ for(Option option : options) {
 					.manufacturer(rs.getString("manufacturer"))
 					.name(rs.getString("name"))
 					.optionId(rs.getString("option_id"))
-					.optionPK(rs.getLong("option_id"))
+					.optionPK(rs.getLong("option_pk"))
 					.price(rs.getBigDecimal("price"))
 					.build();
 			
@@ -282,7 +280,7 @@ for(Option option : options) {
 			// @formatter:off
 			return Customer.builder()
 					.customerId(rs.getString("customer_id"))
-					.customerPK(rs.getLong("cistomer_pk"))
+					.customerPK(rs.getLong("customer_pk"))
 					.firstName(rs.getString("first_name"))
 					.lastName(rs.getString("last_name"))
 					.phone(rs.getString("phone"))

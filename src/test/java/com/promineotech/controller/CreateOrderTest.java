@@ -28,7 +28,7 @@ import com.promineotech.jeep.JeepSales;
 import com.promineotech.jeep.entity.JeepModel;
 import com.promineotech.jeep.entity.Order;
 
-@TestConfiguration
+//@TestConfiguration
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, classes = {JeepSales.class})
 @ActiveProfiles ("test")
 @Sql(
@@ -91,6 +91,7 @@ class CreateOrderTest extends CreateOrderTestSupport {
 //	private Object asserThat(int countRowsInTable) {
 //		
 //		return null;
+	
 //	}
 
 }

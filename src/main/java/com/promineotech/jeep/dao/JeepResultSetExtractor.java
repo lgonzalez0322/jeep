@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowCallbackHandler;
 
 import com.promineotech.jeep.entity.Jeep;
+import com.promineotech.jeep.entity.JeepModel;
 
 public class JeepResultSetExtractor implements ResultSetExtractor<Jeep> {
 
@@ -18,7 +19,18 @@ public class JeepResultSetExtractor implements ResultSetExtractor<Jeep> {
 	@Override
 	public Jeep extractData(ResultSet rs) throws SQLException, DataAccessException {
 		
-		return null;
+		  rs.next();
+	      // @formatter:off
+	      return Jeep.builder()
+	          .modelPK(rs.getLong("model_pk"))
+	          .modelId(JeepModel.valueOf(rs.getString("model_id")))
+	          .trimLevel(rs.getString("trim_level"))
+	          .numDoors(rs.getInt("num_doors"))
+	          .wheelSize(rs.getInt("wheel_size"))
+	          .basePrice(rs.getBigDecimal("base_price"))         
+	          .build();
+	      // @formatter:on
+		
 	}
 
 }

@@ -13,9 +13,18 @@ public class TireResultSetExtractor implements ResultSetExtractor<Tire> {
 
 	@Override
 	public Tire extractData(ResultSet rs) throws SQLException, DataAccessException {
-		
-		
-		return null;
+		rs.next();
+		 // @formatter:off 
+	      return Tire.builder()
+	          .tirepk(rs.getLong("tire_pk"))
+	          .manufacturer(rs.getString("manufacturer"))
+	          .price(rs.getBigDecimal("price"))
+	          .tireId(rs.getString("tire_id"))
+	          .tireSize(rs.getString("tire_size"))
+	          .warrantyMiles(rs.getInt("warranty_miles"))
+	          .build();
+	      // @formatter:on
+	
 	}
 
 

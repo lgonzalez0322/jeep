@@ -48,7 +48,8 @@ public class OrderRequest {
 	private String tire;
 	
 	
+//	private List<@NotNull @Length(max = 30) @Pattern(
+//			regexp = "[A-Z0-9_]") String> options;
 	private List<@NotNull @Length(max = 30) @Pattern(
-			regexp = "[A-Z0-9_]") String> options;
-
+			regexp = "[\\w\\s]*") String> options;
 }

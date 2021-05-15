@@ -16,7 +16,16 @@ public class ColorResultSetExtractor implements ResultSetExtractor<Color> {
 	@Override
 	public Color extractData(ResultSet rs) throws SQLException, DataAccessException {
 		
-		return null;
+		  rs.next();
+	      // @formatter:off
+	      return Color.builder()
+	          .colorPK(rs.getLong("color_pk"))
+	          .colorId(rs.getString("color_id"))
+	          .color(rs.getString("color"))
+	          .price(rs.getBigDecimal("price"))
+	          .isExterior(rs.getBoolean("is_exterior"))
+	          .build();
+	      // @formatter:on
 	}
 
 	
