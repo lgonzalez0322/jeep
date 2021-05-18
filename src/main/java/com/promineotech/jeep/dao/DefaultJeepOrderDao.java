@@ -30,6 +30,7 @@ import com.promineotech.jeep.entity.Option;
 import com.promineotech.jeep.entity.OptionType;
 import com.promineotech.jeep.entity.Order;
 import com.promineotech.jeep.entity.Tire;
+import com.promineotech.jeep.entity.FuelType;
 
 @Component
 public class DefaultJeepOrderDao implements JeepOrderDao {
@@ -102,7 +103,7 @@ for(Option option : options) {
 			BigDecimal price) {
 		//@formatter :off
 		String sql = ""
-				+ "INSERT INTO orders ('"
+				+ "INSERT INTO orders ("
 				+ "customer_fk, color_fk, engine_fk, tire_fk, model_fk, price"
 				+") VALUES ("
 				+ ":customer_fk, :color_fk, :engine_fk, :tire_fk, :model_fk, :price"				
@@ -128,7 +129,7 @@ for(Option option : options) {
 	@Override
 	public List<Option> fetchOptions(List<String> optionIds) {
 		if(optionIds.isEmpty()) {
-			return new LinkedList<>();
+			return new LinkedList<Option>();
 		}
 		
 		Map<String, Object> params = new HashMap<>();
@@ -199,7 +200,7 @@ for(Option option : options) {
 		// @formatter :off
 		String sql = ""
 				+ "SELECT * "
-				+ "FROM models '"
+				+ "FROM models "
 				+ "WHERE model_id = :model_id "
 				+ "AND trim_level = :trim_level "
 				+ "AND num_doors = :num_doors";
@@ -237,7 +238,7 @@ for(Option option : options) {
 		//formatter :off
 		String sql = ""
 		+ "SELECT * "
-		+ "FROM Engines "
+		+ "FROM engines "
 		+ "WHERE engine_id = :engine_id";
 		// @formatter :on
 				
@@ -255,7 +256,7 @@ for(Option option : options) {
 		//formatter :off
 				String sql = ""
 				+ "SELECT * "
-				+ "FROM Tire"
+				+ "FROM tires"
 				+ "WHERE tire_id = :tire_id";
 				// @formatter :on
 				
@@ -268,6 +269,8 @@ for(Option option : options) {
 	
 	
 	
+
+
 	
 		
 	class CustomerResultSetExtractor implements ResultSetExtractor<Customer> {
@@ -295,11 +298,11 @@ class SqlParams {
 	MapSqlParameterSource source = new MapSqlParameterSource();
 }
 
-@Override
-public Order saveOrder(Customer customer, Jeep jeep, Color color, Engine engine, Tire tire, BigDecimal price) {
-	// TODO Auto-generated method stub
-	return null;
-}
+//@Override
+//public Order saveOrder(Customer customer, Jeep jeep, Color color, Engine engine, Tire tire, BigDecimal price) {
+//	// TODO Auto-generated method stub
+//	return null;
+//}
 
 
 

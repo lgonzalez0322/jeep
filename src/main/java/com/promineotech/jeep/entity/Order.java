@@ -17,6 +17,8 @@ public class Order {
 	private Long orderPK;
 	private Customer customer;
 	private Jeep model;
+	private String trim;
+	private int doors;
 	private Color color;
 	private Engine engine;
 	private Tire tire;

@@ -34,7 +34,7 @@ public interface JeepOrderController {
 			description = "Returns the created Jeep",
 			responses = {
 					@ApiResponse(
-						responseCode = "200",
+						responseCode = "201",
 						description = "The created Jeep is returned", 
 						content = @Content(mediaType = "application/json",
 						schema = @Schema(implementation = Order.class))),
@@ -44,7 +44,7 @@ public interface JeepOrderController {
 						content = @Content(mediaType = "application/json")),
 					@ApiResponse(
 						responseCode = "404", 
-						description = "A Jeep component was not foun with the inpiut criteria",
+						description = "A Jeep component was not found with the input criteria",
 						content = @Content(mediaType = "application/json")),
 					@ApiResponse(
 						responseCode = "500", 
@@ -53,7 +53,7 @@ public interface JeepOrderController {
 			},
 			parameters = {
 					@Parameter(name = "orderRequest", 
-						required = false, 
+						required = true, 
 						description = "the order as JSON"),
 			
 	}
