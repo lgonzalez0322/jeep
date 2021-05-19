@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class BasicJeepSalesController implements JeepSalesController {
 	
-	//@Autowired
+	@Autowired
 	private JeepSalesService jeepSalesService;
 	@Override
 	public List<Jeep> fetchJeeps(JeepModel model, String trim) {

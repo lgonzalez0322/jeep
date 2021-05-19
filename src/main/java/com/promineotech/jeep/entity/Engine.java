@@ -14,9 +14,9 @@ public class Engine {
 	private Float sizeInLiteers;
 	private String name;
 	private FuelType fuelType;
-	private float mpgCity;
+	private Float mpgCity;
 	private Float mpgHwy;
-	private boolean hasStartStop;
+	private Boolean hasStartStop;
 	private String description;
 	private BigDecimal price;
 }
