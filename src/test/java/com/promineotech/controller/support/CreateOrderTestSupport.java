@@ -10,7 +10,7 @@ public class CreateOrderTestSupport extends BaseTest{
 	protected String createorderbody()  {
 	//@formatter:off
 	return  "{\n"
-			+ "		\"customer\":\"Morrison_Lina\",\n"
+			+ "		\"customer\":\"MORRISON_LINA\",\n"
 			+ "		\"model\":\"WRANGLER\",\n"
 			+ "		\"trim\":\"Sport Altitude\",\n"
 			+ "		\"doors\":\"4\",\n"
@@ -21,7 +21,7 @@ public class CreateOrderTestSupport extends BaseTest{
 			+ "			\"DOOR_QUAD_4\",\n"
 			+ "			\"EXT_AEV_LIFT\",\n"
 			+ "			\"EXT_WARN_WINCH\",\n"
-			+ "			\"EXTZ_WARN_BUMPER_FRONT\",\n"
+			+ "			\"EXT_WARN_BUMPER_FRONT\",\n"
 			+ "			\"EXT_WARN_BUMPER_REAR\",\n"
 			+ "			\"EXT_ARB_COMPRESSOR\"\n"
 			+ "		]\n"

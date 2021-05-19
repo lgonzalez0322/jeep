@@ -256,7 +256,7 @@ for(Option option : options) {
 		//formatter :off
 				String sql = ""
 				+ "SELECT * "
-				+ "FROM tires"
+				+ "FROM tires "
 				+ "WHERE tire_id = :tire_id";
 				// @formatter :on
 				

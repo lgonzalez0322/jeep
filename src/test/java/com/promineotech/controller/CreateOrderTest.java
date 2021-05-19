@@ -2,12 +2,10 @@ package com.promineotech.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.assertj.core.api.AbstractAssert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -19,7 +17,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 import org.springframework.test.jdbc.JdbcTestUtils;
-import org.springframework.web.bind.annotation.Mapping;
+
 
 //import com.mysql.cj.x.protobuf.MysqlxCrud.Order;
 
@@ -83,7 +81,7 @@ class CreateOrderTest extends CreateOrderTestSupport {
 		assertThat(JdbcTestUtils.countRowsInTable(jdbcTemplate, "orders"))
 		.isEqualTo(numRowsOrders + 1);
 		
-		assertThat(JdbcTestUtils.countRowsInTable(jdbcTemplate, "orders"))
+		assertThat(JdbcTestUtils.countRowsInTable(jdbcTemplate, "order_options"))
 		.isEqualTo(numRowsOptions + 6);
 	}
 
